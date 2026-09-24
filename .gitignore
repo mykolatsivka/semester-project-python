@@ -33,3 +33,8 @@ Thumbs.db
 .codex-tmp/
 *.tmp
 ~$*.docx
+
+# Runtime data
+data/*.db
+data/*.sqlite
+data/*.sqlite3
