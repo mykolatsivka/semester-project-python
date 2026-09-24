@@ -1,69 +1,47 @@
-# DataLens
+# DataLens Desktop
 
-DataLens is an interactive web application for exploratory analysis of CSV datasets. It helps a user inspect data quality, calculate descriptive statistics, compare groups, filter records, visualize distributions and relationships, and keep a local history of analyses.
+DataLens — нативна Windows-програма для дослідницького аналізу CSV-даних. Вона
+працює локально, відкривається в окремому вікні та не потребує браузера.
 
-The project is being developed as a semester project for the Python programming course. The current `mvp` branch contains the first functional version.
+## Можливості
 
-## MVP functionality
+- відкриття CSV або вбудованого демонстраційного набору даних;
+- огляд таблиці, структури, пропусків, дублікатів і показника якості;
+- фільтрація числових, категоріальних, текстових і датованих колонок;
+- описова статистика та матриця кореляцій;
+- гістограми, box plot, scatter plot і стовпчикові діаграми;
+- порівняння груп за середнім, медіаною, сумою, мінімумом, максимумом або кількістю;
+- експорт відфільтрованої вибірки в CSV;
+- локальна історія аналітичних знімків у SQLite.
 
-- Upload a CSV file or open the built-in demonstration dataset.
-- Inspect dataset dimensions, column roles, missing values, duplicates, and a data-quality score.
-- Filter rows by numeric, categorical, or date columns.
-- Calculate descriptive statistics and a correlation matrix.
-- Build interactive histograms, box plots, scatter plots, and bar charts.
-- Compare groups using count, mean, median, sum, minimum, or maximum.
-- Download the filtered dataset as CSV.
-- Save and review analysis snapshots in a local SQLite database.
-
-## Technology areas
-
-1. Data Science: pandas and NumPy.
-2. Web user interface: Streamlit and Plotly.
-3. Databases: SQLite through Python's standard `sqlite3` module.
-
-## Project structure
-
-```text
-.
-├── app.py
-├── src/datalens/
-│   ├── analysis.py
-│   ├── data_loader.py
-│   ├── database.py
-│   ├── demo.py
-│   └── filters.py
-├── tests/
-├── data/
-├── docs/
-└── pyproject.toml
-```
-
-## Installation
-
-Python 3.11 or newer is required.
+## Встановлення
 
 ```powershell
+cd "C:\IT\Study\Semester project Python"
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
 ```
 
-## Running
+## Запуск
 
 ```powershell
-streamlit run app.py
+cd "C:\IT\Study\Semester project Python"
+.\.venv\Scripts\python.exe app.py
 ```
 
-The application opens at `http://localhost:8501`. Start with the demonstration dataset or upload a CSV file up to 25 MB.
-
-## Tests
+## Створення Windows EXE
 
 ```powershell
-pytest
+.\build_desktop.ps1
 ```
 
-## Data and privacy
+Готовий застосунок з'явиться у `dist\DataLens\DataLens.exe`.
 
-Uploaded CSV content is processed in the running application and is not sent to an external API. The SQLite history stores dataset metadata only: file name, dimensions, missing-cell count, duplicate-row count, and the calculated quality score.
+## Тести
 
+```powershell
+.\.venv\Scripts\python.exe -m pytest
+```
+
+Вміст CSV обробляється лише локально. В SQLite зберігаються тільки метадані
+аналізу, а не сам набір даних.

@@ -5,18 +5,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "datalens"
 version = "0.1.0"
-description = "Interactive data analysis dashboard for CSV datasets"
+description = "Desktop application for exploratory analysis of CSV datasets"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "matplotlib>=3.9,<4",
     "numpy>=2.0,<3",
     "pandas>=2.2,<4",
-    "plotly>=5.24,<7",
-    "streamlit>=1.40,<2",
+    "PySide6>=6.8,<7",
 ]
 
 [project.optional-dependencies]
 dev = [
+    "pyinstaller>=6.10,<7",
     "pytest>=8,<10",
     "ruff>=0.8,<1",
 ]

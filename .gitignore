@@ -19,6 +19,7 @@ env/
 # Build and coverage artifacts
 build/
 dist/
+*.spec
 *.egg-info/
 .coverage
 htmlcov/
